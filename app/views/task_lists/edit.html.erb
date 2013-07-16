@@ -1,0 +1,21 @@
+<h1>Edit</h1>
+<%= form_for @task_list, :url => { :action => "update" }, :html => { :class => "form-task-list" } do |f| %>
+
+	<% if @task_list.errors.any? %>
+	<div id="errorExplanation">  
+    	<h2><%= pluralize(@task_list.errors.count, "error") %> prohibited this task list from being saved:</h2>  
+    	<ul>  
+    	<% @task_list.errors.full_messages.each do |msg| %>  
+      		<li><%= msg %></li>  
+    	<% end %>  
+    	</ul>  
+  	</div>
+	<% end %>
+
+	<%= render :partial => f %>
+
+	<fieldset class="form_action">
+		<%= f.submit "Edit" %>
+	</fieldset>
+
+<% end %>

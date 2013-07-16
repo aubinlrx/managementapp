@@ -1,0 +1,21 @@
+<h1>Edition du projet : <%= @project.title %></h1>
+<%= form_for @project, :url => { :action => "update" }, :html => { :class => "form-project" } do |f| %>
+
+	<% if @project.errors.any? %>
+	<div id="errorExplanation">  
+    	<h2><%= pluralize(@project.errors.count, "error") %> prohibited this task list from being saved:</h2>  
+    	<ul>  
+    	<% @project.errors.full_messages.each do |msg| %>  
+      		<li><%= msg %></li>  
+    	<% end %>  
+    	</ul>  
+  	</div>
+	<% end %>
+
+	<%= render :partial => f %>
+
+	<fieldset class="form_action">
+		<%= f.submit "Edit" %>
+	</fieldset>
+
+<% end %>

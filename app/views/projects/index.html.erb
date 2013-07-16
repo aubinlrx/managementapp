@@ -1,0 +1,31 @@
+<h1>Index</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if @projects.any? %>
+		<% @projects.each do |project| %>
+		<tr>
+			<td><%= project.id %></td>
+			<td><%= project.title %></td>
+			<td><%= project.description %></td>
+			<td><%= link_to 'Show', project_path(project) %></td>
+			<td><%= link_to 'Edit', edit_project_path(project) %></td>
+			<td><%= link_to 'Delete', project_path(project), method: :delete, :data => { confirm: "Are you sure ?"} %></td>
+		</tr>
+		<% end %>
+		<% else %>
+		<tr>
+			<td colspan="3">Auncun projet</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to 'Create', new_project_path %>

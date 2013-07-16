@@ -1,0 +1,12 @@
+<h1><%= @project.title %></h1>
+<p><%= @project.description %></p>
+
+<% if @task_lists.any? %>
+<ul>
+	<% @task_lists.each do |task_list| %>
+	<li><%= task_list.title %> <%= link_to 'Delete', project_task_list_path(@project.id, task_list), method: :delete, :data => { confirm: "Are you sure ?"} %></li>
+	<% end %>
+</ul>
+<% else %>
+<p>Aucune liste de tâche</p>
+<% end %>
